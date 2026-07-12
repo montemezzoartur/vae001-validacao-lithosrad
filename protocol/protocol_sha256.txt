@@ -1,0 +1,9 @@
+﻿
+Hash                                                             Arquivo                                      
+----                                                             -------                                      
+ECD78E9F206A7468D32D8D2585542A5B617E61408386D997AFBF9C5D190478C2 PROTOCOLO_VAE-001_v2.0_LithosRad.pdf         
+E358FAF8D9EA9333CA400C35BF4B074F9717F0EA3846F00C37C4CB8EF659AD32 PROTOCOLO_VAE-001_v2.0_LithosRad_assinado.pdf
+1B2FC0F4E01032E63E170E6EC342E21B8DC4AF8E4B0C102C020094614A2A1F33 PROTOCOLO_VAE-001_v2.0_LithosRad.docx        
+
+
+
