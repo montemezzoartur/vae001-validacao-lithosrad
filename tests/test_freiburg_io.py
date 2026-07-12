@@ -26,7 +26,14 @@ DIVISAO_V2 = ROOT / "results" / "divisao_v2.json"
 
 @pytest.fixture(scope="module")
 def calculos():
-    return carregar_freiburg(MAT)
+    """Os 101 = DESENV + LACRADO. O acesso ao LACRADO e explicito e efemero:
+    a variavel de lacre so fica setada durante a carga (MonkeyPatch.context a
+    desfaz na saida do `with`), entao nao vaza para test_lacrado_sem_variavel."""
+    with pytest.MonkeyPatch.context() as mp:
+        mp.setenv("VAE001_LACRE_ABERTO", "1")
+        desenv = carregar_freiburg(MAT, grupo="DESENV")
+        lacrado = carregar_freiburg(MAT, grupo="LACRADO")
+    return sorted(desenv + lacrado, key=lambda c: c["id"])
 
 
 @pytest.fixture(scope="module")
@@ -74,13 +81,14 @@ def test_nao_abre_csv_original(monkeypatch):
         return real_open(file, *args, **kwargs)
 
     monkeypatch.setattr(builtins, "open", _spy_open)
-    carregar_freiburg(MAT)
+    carregar_freiburg(MAT, grupo="DESENV")
     assert not any(p.endswith("ct-uroliths_table.csv") for p in abertos), \
         f"abriu o CSV proibido: {[p for p in abertos if p.endswith('ct-uroliths_table.csv')]}"
 
 
-def test_filtro_por_grupo():
+def test_filtro_por_grupo(monkeypatch):
     assert len(carregar_freiburg(MAT, grupo="DESENV")) == 25
+    monkeypatch.setenv("VAE001_LACRE_ABERTO", "1")
     assert len(carregar_freiburg(MAT, grupo="LACRADO")) == 76
 
 
@@ -88,3 +96,18 @@ def test_ids_desenv_batem_divisao_v2():
     div = json.loads(DIVISAO_V2.read_text(encoding="utf-8"))
     ids = sorted(c["id"] for c in carregar_freiburg(MAT, grupo="DESENV"))
     assert ids == sorted(div["desenvolvimento"])
+
+
+# ---- a trava do conjunto lacrado (VAE-001, Secao 3.2 e 12) ----
+
+def test_grupo_none_levanta_erro():
+    """grupo e obrigatorio: None nao e valido e cai no ramo de erro."""
+    with pytest.raises(ValueError):
+        carregar_freiburg(MAT, grupo=None)
+
+
+def test_lacrado_sem_variavel_bloqueia(monkeypatch):
+    """LACRADO sem VAE001_LACRE_ABERTO no ambiente e bloqueado."""
+    monkeypatch.delenv("VAE001_LACRE_ABERTO", raising=False)
+    with pytest.raises(RuntimeError):
+        carregar_freiburg(MAT, grupo="LACRADO")

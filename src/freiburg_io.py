@@ -24,6 +24,7 @@ Premissas VERIFICADAS (Fase 0/0d) — não assumidas:
     por assert a cada cálculo.
 """
 import csv
+import os
 from pathlib import Path
 
 import numpy as np
@@ -64,7 +65,7 @@ def _load_referencia():
     return ref
 
 
-def carregar_freiburg(path, grupo=None):
+def carregar_freiburg(path, *, grupo):
     """
     Carrega o dataset ct-uroliths-freiburg como uma lista de dicts.
 
@@ -73,7 +74,13 @@ def carregar_freiburg(path, grupo=None):
     `results/referencia_autoritativa.csv`, casada por posição: cálculo i do .mat
     <-> mat_id i+1.
 
-    `grupo` filtra por 'DESENV' ou 'LACRADO'; None (padrão) carrega os 101.
+    `grupo` é OBRIGATÓRIO e keyword-only (trava contra acesso acidental):
+      'DESENV'   — os 25 cálculos de desenvolvimento.
+      'LACRADO'  — os 76 lacrados; EXIGE VAE001_LACRE_ABERTO=1 no ambiente. O
+                   lacre só cai após o congelamento do LithosRad (protocolo
+                   VAE-001, Seções 3.2 e 12) e abri-lo é um evento único e
+                   irreversível.
+      'TODOS'    — proibido: revelaria os desfechos do conjunto lacrado.
 
     Cada dict contém:
       id          : int          — 1-based; igual ao mat_id da referência
@@ -83,8 +90,23 @@ def carregar_freiburg(path, grupo=None):
       gt_diam_mm  : float        — diâmetro de referência (mm)
       stone_type  : str | None   — composição (None = n.d.)
     """
-    if grupo not in (None, "DESENV", "LACRADO"):
-        raise ValueError(f"grupo deve ser None, 'DESENV' ou 'LACRADO'; recebi {grupo!r}")
+    if grupo == "DESENV":
+        pass
+    elif grupo == "LACRADO":
+        if not os.environ.get("VAE001_LACRE_ABERTO"):
+            raise RuntimeError(
+                "CONJUNTO LACRADO. O acesso exige congelamento previo do "
+                "LithosRad (protocolo VAE-001, Secao 3.2 e 12). Para abrir, "
+                "defina VAE001_LACRE_ABERTO=1 -- e saiba que isso e um evento "
+                "unico e irreversivel."
+            )
+    elif grupo == "TODOS":
+        raise RuntimeError(
+            "Carregar os 101 juntos e proibido: revelaria desfechos do "
+            "conjunto lacrado. Use grupo='DESENV'."
+        )
+    else:
+        raise ValueError(f"grupo invalido: {grupo!r}")
 
     ref = _load_referencia()
 
@@ -98,7 +120,7 @@ def carregar_freiburg(path, grupo=None):
     for i, s in enumerate(stones):
         mat_id = i + 1
         r = ref[mat_id]
-        if grupo is not None and r["grupo"] != grupo:
+        if r["grupo"] != grupo:
             continue
 
         img = np.asarray(s["imgdata"])
