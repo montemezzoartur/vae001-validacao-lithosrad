@@ -6,3 +6,6 @@ __pycache__/
 # scratch de desenvolvimento (nao versionado)
 probe.py
 saida.txt
+
+# bundle do LithosRad congelado — backup, nao versionar (SHA-256 em protocol/lithosrad_bundle_sha256.txt)
+*.bundle
