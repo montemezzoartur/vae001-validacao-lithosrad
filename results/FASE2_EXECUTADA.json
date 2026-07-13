@@ -1,0 +1,41 @@
+{
+  "quando": "2026-07-13T18:18:15.726797+00:00",
+  "commit_lithosrad": "e71787de4aae17389ded23a284d2d3df518a58e0",
+  "commit_validacao": "91ab6d233adc63ff3c2f582d10f00b7e122546c2",
+  "git_limpo": false,
+  "n_calculos": 76,
+  "n_fallbacks": 0,
+  "ids_fallback": [],
+  "n_falhas": 0,
+  "ids_falha": [],
+  "csv": "results\\fase2_lacrado.csv",
+  "csv_sha256": "e94d42b515ed4fd4f5cb072c42afd206a6a0e109ae1b7b7d64af848134be4c23",
+  "csv_prevoo": "results\\fase2_prevoo_desenv.csv",
+  "csv_prevoo_sha256": "551641de3d624a51c4e162c9ef583063f627a23c1032d34ca566d40e4d349e58",
+  "mat_sha256": "d8184b37eb6a8fa4aa4affd249787068d5e77f19388323b8e99736c99313ec87",
+  "criterios_aceite": {
+    "estrato_primario_mm": 10.0,
+    "CA1_semiamplitude_loa_max_pp": 25.0,
+    "CA2_inclinacao_max_pp_por_dobra": 5.0,
+    "CA3_taxa_falha_max_pct": 5.0,
+    "CA4_limiar_declaracao_ifu_pct": 10.0
+  },
+  "prevoo_esperado": {
+    "diam_vies_mm": [
+      0.04,
+      0.06
+    ],
+    "diam_sd_mm": [
+      0.35,
+      0.06
+    ],
+    "diam_pior_mm": [
+      0.76,
+      0.1
+    ],
+    "vol_vies_pct": [
+      76.0,
+      15.0
+    ]
+  }
+}
