@@ -3,6 +3,8 @@
 Fixado em 22/11/2026, antes de o responsável abrir as figuras dos oito cálculos nomeados.
 Não altera o Adendo P: detalha como a inspeção do item 4 é feita.
 
+Versão 2, de 22/11/2026. A versão 1 (commit 4807d4c, das 16:10) trazia quatro perguntas abertas. Esta traz as mesmas dimensões em cinco perguntas fechadas, as da planilha de respostas, e fixa a planilha como registro. A mudança foi feita antes de as figuras dos oito cálculos serem geradas.
+
 ## Limites
 
 - Descrição apenas: número e tamanho das componentes, posição do diâmetro máximo e figura. Nenhuma estatística e nenhuma medida nova, nem com régua.
@@ -19,14 +21,17 @@ Não altera o Adendo P: detalha como a inspeção do item 4 é feita.
 - Com T de 200 UH ou mais, o magenta fica por dentro do ciano. O que está entre os dois é a borda entre 200 UH e T, que a fração apara.
 - As imagens públicas têm o fundo zerado abaixo de cerca de 101 UH: a borda visível mais externa é a da máscara do arquivo, não necessariamente a do cálculo.
 
-## As mesmas quatro perguntas, para cada cálculo
+## As mesmas cinco perguntas, para cada cálculo
 
-1. Forma e estrutura. Compacto, alongado, irregular ou espiculado, laminar? Homogêneo, ou com núcleo denso e periferia tênue?
-2. Extremos do diâmetro. Cada extremo cai numa face larga, numa ponta fina ou espícula de um ou dois voxels, ou numa parte ligada ao resto por uma ponte estreita?
-3. Sobra ou excesso na direção do diâmetro. Além de cada extremo ainda há cálculo visível (o dispositivo mediu a menos), ou a superfície medida passa do que parece cálculo (mediu a mais)?
-4. Faixa entre os contornos ciano e magenta nos dois extremos. Não existe, tem cerca de um voxel, ou é larga?
+Respostas fechadas, escolhidas numa lista. Cada lista tem também a opção "outro (ver observações)".
 
-Registrar também quando nada for encontrado.
+1. Forma: compacto; alongado; irregular; espiculado; laminar.
+2. Estrutura: homogêneo; heterogêneo; núcleo denso e periferia tênue.
+3. Os extremos do diâmetro caem em: duas faces largas; uma face larga e uma ponta fina; duas pontas finas; parte ligada por ponte estreita.
+4. Além dos extremos, na direção do diâmetro: sobra cálculo visível (mediu a menos); a superfície passa do cálculo (mediu a mais); nem um nem outro.
+5. Faixa entre os contornos ciano e magenta, nos extremos: não existe; cerca de um voxel; larga.
+
+Depois, em texto livre: a resposta à pergunta específica do cálculo e as observações. Registrar também quando nada for encontrado.
 
 ## Pergunta específica de cada cálculo
 
@@ -45,4 +50,6 @@ Números de results/poshoc_lacrado.csv (execução única de 22/11/2026). Diâme
 
 ## Registro
 
-O responsável escreve uma ou duas linhas por cálculo, respondendo às quatro perguntas e à específica. O texto entra no relatório dos resultados como descrição do radiologista, ao lado da tabela de results/poshoc_item4.md.
+O responsável preenche results/poshoc_item4_descricao.xlsx, uma linha por cálculo: as cinco respostas fechadas, a resposta à pergunta específica e as observações. A planilha em branco é commitada antes de as figuras dos oito serem geradas; a preenchida, depois. A linha de exemplo da planilha é do cálculo 56, do desenvolvimento, e foi escrita pelo modelo de linguagem só para mostrar o formato. O conteúdo entra no relatório dos resultados como descrição do radiologista, ao lado da tabela de results/poshoc_item4.md.
+
+As saídas do teste no desenvolvimento que estão em results/ (poshoc_item4_desenv.*) foram geradas pelo modelo de linguagem no ambiente de teste, não pelo responsável.
