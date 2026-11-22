@@ -1,0 +1,80 @@
+{
+  "quando": "2026-11-22T17:50:18.952974+00:00",
+  "o_que": "Adendo P -- analises pos-hoc sobre as imagens do lacrado; dispositivo NAO reexecutado",
+  "adendo_p_pdf": "protocol/ADENDO_VAE-001_P_POSHOC_v1.0_assinado.pdf",
+  "adendo_p_pdf_sha256": "6c3851bd224f212d19f84ff59c9396875137edbc63150dbb409d73dc13eaf80c",
+  "scripts_sha256_lf": {
+    "poshoc_lacrado.py": "d918fe352d162c7e5399890cf51a0e2d4f4b675c74fb5c26ad2c903d87519ca6",
+    "poshoc_analise.py": "59390856be292b40358e89b72a6a6b3d46b93313a6698c56d43616c3e923d88b",
+    "fase1_diam_pico.py": "9fe64287490530105936f98782c6e83630c5c7d849aeec981b95230fbc430500",
+    "src/freiburg_io.py": "2b839eae20fb763cad318cc7d506e891976ecbf8b2e15bae496cbc26b457ba73"
+  },
+  "commit_validacao": "6da116a8241958ca55469a288da9d40ded8be580",
+  "ramo_remoto": "origin/master",
+  "head_no_remoto": true,
+  "arquivos_nao_rastreados": [],
+  "rastreados_sem_alteracao": true,
+  "sem_git_motivo": null,
+  "mat_sha256": "d8184b37eb6a8fa4aa4affd249787068d5e77f19388323b8e99736c99313ec87",
+  "fase2_lacrado_csv_sha256": "e94d42b515ed4fd4f5cb072c42afd206a6a0e109ae1b7b7d64af848134be4c23",
+  "fase2_prevoo_csv_sha256": "551641de3d624a51c4e162c9ef583063f627a23c1032d34ca566d40e4d349e58",
+  "fase2_quando": "2026-07-13T18:18:15.726797+00:00",
+  "commit_lithosrad": "e71787de4aae17389ded23a284d2d3df518a58e0",
+  "ambiente": {
+    "python": "3.12.10",
+    "numpy": "2.5.2",
+    "scipy": "1.18.0",
+    "pandas": "3.0.5",
+    "scikit-image": "0.26.0",
+    "plataforma": "Windows-11-10.0.26200-SP0"
+  },
+  "parametros": {
+    "fracao_do_p95": 0.225,
+    "limiar_fixo_UH": 200.0,
+    "tolerancia_mm": 1e-06
+  },
+  "diff_emulacao": [
+    "-    m = F.maior_comp(hu >= T)",
+    "+    m = F.maior_comp(hu >= 200.0)"
+  ],
+  "prevoo": {
+    "p95 x fase1_diam_pico.csv": "25/25",
+    "maximo x fase1_diam_pico.csv": "25/25",
+    "reimplementacao 0,225 x p95 x fase1_diam_pico.csv": "25/25",
+    "reimplementacao 200 UH fixos x fase1_diam_pico.csv": "25/25",
+    "emulacao: diametro x dispositivo congelado": "25/25",
+    "emulacao: maximo x dispositivo congelado": "25/25",
+    "emulacao: numero de voxels x dispositivo congelado": "25/25",
+    "maior_dif_emulacao_dispositivo_mm": 1.448894728639516e-07,
+    "csv_prevoo_igual_ao_gravado_antes": true
+  },
+  "n_calculos": 76,
+  "n_sem_valor": {
+    "d_emul": 0,
+    "d_reimpl": 0,
+    "d_fix200": 0
+  },
+  "item1_emulacao_x_dispositivo": {
+    "diametro": 76,
+    "maximo": 76,
+    "n_voxels": 76,
+    "maior_dif_mm": 6.244016770295957e-07,
+    "ids_diametro_difere": []
+  },
+  "casos_ids": [
+    3,
+    28,
+    29,
+    41,
+    83,
+    88,
+    91,
+    100
+  ],
+  "csv": "results/poshoc_lacrado.csv",
+  "csv_sha256": "b38fa2053a25f19bb22b5cbbd18d87a7bf5e5b652ac5c524ea7967e716f52faf",
+  "csv_prevoo": "results/poshoc_prevoo_desenv.csv",
+  "csv_prevoo_sha256": "fcf4259defe9b04349e66027fce011a7d59fb49023906c0c627fb3a780eb833b",
+  "casos": "results/poshoc_casos.npz",
+  "casos_sha256": "109d5d0107f8301727f997ab56e8aef0cfb1df068adedc8298ad956813acfe65"
+}
