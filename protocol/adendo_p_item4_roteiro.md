@@ -53,3 +53,22 @@ Números de results/poshoc_lacrado.csv (execução única de 22/11/2026). Diâme
 O responsável preenche results/poshoc_item4_descricao.xlsx, uma linha por cálculo: as cinco respostas fechadas, a resposta à pergunta específica e as observações. A planilha em branco é commitada antes de as figuras dos oito serem geradas; a preenchida, depois. A linha de exemplo da planilha é do cálculo 56, do desenvolvimento, e foi escrita pelo modelo de linguagem só para mostrar o formato. O conteúdo entra no relatório dos resultados como descrição do radiologista, ao lado da tabela de results/poshoc_item4.md.
 
 As saídas do teste no desenvolvimento que estão em results/ (poshoc_item4_desenv.*) foram geradas pelo modelo de linguagem no ambiente de teste, não pelo responsável.
+
+## Esclarecimentos dados durante a inspeção
+
+Não estavam no roteiro commitado antes da abertura das figuras (commit a0f6546, das 16:35). Foram dados pelo modelo de linguagem, sem ver as figuras, a pedido do responsável.
+
+### 22/11/2026, 16:46 — o que conta como "cálculo visível" (pergunta 4 e perguntas específicas)
+
+- Conta tudo o que não é preto. O fundo do arquivo público foi zerado abaixo de cerca de 101 UH; em água, o que resta é cálculo ou a borda borrada dele.
+- O critério é contar voxels, não julgar o brilho: a janela de cinza de cada figura vai de 0 ao máximo daquele cálculo, então o mesmo valor em UH aparece mais claro num cálculo pouco atenuante e quase preto num denso.
+- Uma borda de um voxel é esperada em qualquer cálculo (volume parcial) e não conta.
+- Pergunta 4, olhando além de cada círculo amarelo, na direção da linha: nenhum ou um voxel não preto, "nem um nem outro"; dois ou mais, "sobra cálculo visível"; círculo no preto, fora do último voxel não preto, "a superfície passa do cálculo".
+- Se os dois extremos derem respostas diferentes, vale a do extremo com mais sobra, e a diferença vai nas observações.
+
+### 22/11/2026, 16:56 — a linha amarela nas projeções
+
+- O diâmetro é um segmento em três dimensões. Cada projeção mostra só duas das três componentes, então a linha amarela pode parecer curta e pode não chegar à ponta da silhueta sem que haja erro. No cálculo 56, do desenvolvimento, o diâmetro de 12,46 mm tem 11,03 mm em x, 1,47 mm em y e 5,60 mm em z: a linha aparece com 5,79 mm na projeção ao longo de x, 11,13 mm ao longo de z e 12,37 mm ao longo de y.
+- O comprimento não se julga na projeção: é o do título da figura, e as três componentes estão em results/poshoc_item4.md.
+- Para a pergunta 4, "além do círculo, na direção da linha" inclui a fatia vizinha: olhar o voxel além do círculo na mesma fatia e também na fatia seguinte para fora (a de número menor, para o extremo que está na fatia de número menor; a de número maior, para o outro).
+
