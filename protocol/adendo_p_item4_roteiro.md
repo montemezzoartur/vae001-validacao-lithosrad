@@ -72,3 +72,10 @@ Não estavam no roteiro commitado antes da abertura das figuras (commit a0f6546,
 - O comprimento não se julga na projeção: é o do título da figura, e as três componentes estão em results/poshoc_item4.md.
 - Para a pergunta 4, "além do círculo, na direção da linha" inclui a fatia vizinha: olhar o voxel além do círculo na mesma fatia e também na fatia seguinte para fora (a de número menor, para o extremo que está na fatia de número menor; a de número maior, para o outro).
 
+## Conferência depois da inspeção (22/11/2026)
+
+Depois do commit b4ed8d1, das 17:16, o modelo de linguagem leu a tabela de números (results/poshoc_item4.md) e as respostas da planilha, sem abrir as figuras, e levantou dois pontos. As respostas são do responsável, das 17:35.
+
+- Cálculo 100. Pelos números, a segunda componente (17 voxels) está nas fatias 45 a 48 e os extremos do diâmetro estão nas fatias 24 e 60; o extremo da fatia 24 fica a 1,4 voxel da borda do recorte público. Perguntado onde fica o fragmento e se o cálculo encosta na borda da imagem, o responsável respondeu: "O fragmento é separado. Fica na face anterior esquerda do calculo. Não toca, mas fica a menos de um voxel da extremidade em 24 e 25." Leitura registrada: o fragmento fica ao lado do corpo do cálculo, e não além de um extremo do diâmetro; o cálculo não encosta na borda da imagem, mas chega a menos de um voxel dela nas fatias 24 e 25.
+- Cálculo 3. A resposta "sobra cálculo visível" foi mantida, embora a faixa fora do contorno de 200 UH tenha cerca de um voxel e o esclarecimento das 16:46 mande não contar uma borda de um voxel. Razão, proposta pelo modelo e aceita pelo responsável: nesse cálculo, o de menor atenuação (máximo de 408 UH), o voxel externo fica entre 104 e 200 UH, de um quarto a metade do máximo; é cálculo pouco atenuante, e não só volume parcial. A regra de contagem não serve para ele.
+
